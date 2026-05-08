@@ -7,7 +7,7 @@ Aplicación móvil desarrollada con React Native CLI y React Navigation. Integra
 - Desarrollado con React Native CLI + TypeScript
 
 <p align="left">
-  <img src="app_navegacion.png" alt="Captura de la aplicación Navegación" width="320" />
+  <img src="documents/app_navegacion.png" alt="Captura de la aplicación Navegación" width="320" />
 </p>
 
 ## Descripción

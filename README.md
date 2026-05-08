@@ -1,97 +1,154 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# Aplicación móvil Navegación - Semana 3
 
-# Getting Started
+Aplicación móvil desarrollada con React Native CLI y React Navigation. Integra navegación por pila, navegación por pestañas inferiores y paso de datos entre pantallas mediante parámetros de ruta.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+- Ingeniería Informática - 7mo "A"
+- Desarrollo de aplicaciones móviles con React Native
+- Desarrollado con React Native CLI + TypeScript
 
-## Step 1: Start Metro
+<p align="left">
+  <img src="app_navegacion.png" alt="Captura de la aplicación Navegación" width="320" />
+</p>
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## Descripción
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+La aplicación muestra un catálogo básico de productos tecnológicos. Desde la pantalla principal, el usuario puede seleccionar un producto y navegar hacia una pantalla de detalle, donde se visualiza la información completa del item seleccionado.
 
-```sh
-# Using npm
-npm start
+El proyecto implementa React Navigation usando una combinación de Bottom Tabs y Stack Navigator. La pestaña Catálogo contiene la navegación por pila entre la lista y el detalle, mientras que la pestaña Acerca de muestra información estática de la aplicación.
 
-# OR using Yarn
-yarn start
-```
+El proyecto fue desarrollado tomando como referencia el documento "Semana3_Navegación.pdf" de la actividad ubicado en la carpeta `documents/` del repositorio.
 
-## Step 2: Build and run your app
+## Funcionalidades
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+- Navegación principal mediante Bottom Tabs.
+- Navegación por Stack dentro de la pestaña Catálogo.
+- Lista de 5 productos tecnológicos.
+- Pantalla de detalle con nombre, categoría, descripción e imagen del producto.
+- Paso del objeto completo del producto mediante parámetros de ruta.
+- Recuperación de datos en la pantalla de detalle con `useRoute()`.
+- Botón "Volver al catálogo" usando `navigation.goBack()`.
+- Pestaña "Acerca de" con información de la app.
+- Iconos personalizados en las pestañas usando emojis.
+- Separación del código por navegación, pantallas, componentes, hooks, tipos y estilos.
 
-### Android
+## Pantallas de la aplicación
 
-```sh
-# Using npm
-npm run android
+| Pantalla | Descripción |
+|---|---|
+| Catálogo | Muestra la lista de productos disponibles. |
+| Detalle | Muestra la información completa del producto seleccionado. |
+| Acerca de | Muestra información general de la aplicación, materia e integrantes. |
 
-# OR using Yarn
-yarn android
-```
+## Estructura de navegación
 
-### iOS
+La aplicación utiliza la siguiente estructura:
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+- NavigationContainer
+  - Bottom Tab Navigator
+    - Catálogo
+      - Stack Navigator
+        - ListaScreen
+        - DetalleScreen
+    - Acerca de
+      - AcercaDeScreen
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+## Datos de prueba utilizados
 
-```sh
-bundle install
-```
+| Producto | Categoría |
+|---|---|
+| Smartphone X1 | Tecnología móvil |
+| Tablet Pro | Productividad |
+| Auriculares BT | Audio |
+| Cámara DSL | Fotografía |
+| Laptop Air | Computación |
 
-Then, and every time you update your native dependencies, run:
+## Estructura principal
 
-```sh
-bundle exec pod install
-```
+- `App.tsx`
+- `src/app/AppNavigator.tsx`
+- `src/navigation/RootTabsNavigator.tsx`
+- `src/navigation/CatalogStackNavigator.tsx`
+- `src/navigation/navigationTypes.ts`
+- `src/features/catalog/domain/CatalogItem.ts`
+- `src/features/catalog/data/catalogItems.ts`
+- `src/features/catalog/hooks/useCatalogItems.ts`
+- `src/features/catalog/components/CatalogCard.tsx`
+- `src/features/catalog/screens/ListaScreen.tsx`
+- `src/features/catalog/screens/DetalleScreen.tsx`
+- `src/features/about/screens/AcercaDeScreen.tsx`
+- `src/shared/components/ScreenContainer.tsx`
+- `src/shared/styles/colors.ts`
+- `src/shared/styles/spacing.ts`
+- `src/shared/styles/radius.ts`
+- `src/shared/styles/typography.ts`
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## Componentes utilizados de React Native
 
-```sh
-# Using npm
-npm run ios
+- View
+- Text
+- FlatList
+- Pressable
+- StatusBar
+- StyleSheet
 
-# OR using Yarn
-yarn ios
-```
+## React Navigation utilizado
 
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
+- NavigationContainer
+- createBottomTabNavigator
+- createStackNavigator
+- useNavigation
+- useRoute
+- NavigatorScreenParams
+- RouteProp
+- StackNavigationProp
 
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
+## Requerimientos técnicos cumplidos
 
-## Step 3: Modify your app
+- Configuración de `@react-navigation/native`.
+- Configuración de `@react-navigation/stack`.
+- Configuración de `@react-navigation/bottom-tabs`.
+- Uso de `NavigationContainer` en la raíz.
+- Stack Navigator anidado dentro de Bottom Tab Navigator.
+- Paso de datos con `navigation.navigate('DetalleScreen', { item })`.
+- Recepción de parámetros con `useRoute()`.
+- Renderizado dinámico de datos en `DetalleScreen`.
+- Botón de regreso con `navigation.goBack()`.
+- Personalización de `tabBarIcon`.
+- Tipado de rutas con TypeScript.
+- Separación ordenada del proyecto por responsabilidades.
 
-Now that you have successfully run the app, let's make changes!
+## Instalación y ejecución
 
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
+Instalar dependencias:
 
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
+`npm install`
 
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
+Ejecutar Metro:
 
-## Congratulations! :tada:
+`npm run start`
 
-You've successfully run and modified your React Native App. :partying_face:
+Ejecutar en Android:
 
-### Now what?
+`npm run android`
 
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
+Ejecutar en iOS:
 
-# Troubleshooting
+`cd ios`
 
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
+`pod install`
 
-# Learn More
+`cd ..`
 
-To learn more about React Native, take a look at the following resources:
+`npm run ios`
 
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+## Nota técnica
+
+Durante las pruebas puede mostrarse el warning:
+
+`InteractionManager has been deprecated and will be removed in a future release.`
+
+Este aviso no proviene del código desarrollado en `src`, ya que el proyecto no utiliza `InteractionManager` directamente. La aplicación funciona correctamente y el warning no afecta la navegación ni el paso de parámetros.
+
+## Autor
+
+Paúl Terán  

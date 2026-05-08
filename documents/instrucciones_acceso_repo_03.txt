@@ -1,0 +1,191 @@
+INSTRUCCIONES DE ACCESO AL REPOSITORIO
+Aplicación móvil Navegación - Semana 3
+
+Repositorio GitHub:
+https://github.com/Parterdev/03_navegacion
+
+DESCRIPCIÓN DEL PROYECTO
+
+Aplicación móvil desarrollada con React Native CLI, TypeScript y React Navigation para implementar una navegación multipantalla mediante navegación por pila y navegación por pestañas inferiores.
+
+La aplicación permite visualizar un catálogo básico de productos tecnológicos. Desde la pantalla principal, el usuario puede seleccionar un producto y navegar hacia una pantalla de detalle, donde se muestra la información completa del item seleccionado.
+
+El proyecto integra Bottom Tabs para separar las secciones principales de la aplicación y Stack Navigator dentro de la pestaña Catálogo para navegar entre la lista de productos y el detalle. Además, se implementa el paso de datos entre pantallas mediante parámetros de ruta.
+
+El proyecto fue desarrollado tomando como referencia el documento de la actividad ubicado en la carpeta documents/ del repositorio.
+
+DATOS ACADÉMICOS
+
+Carrera: Ingeniería Informática
+Nivel: 7mo "A"
+Asignatura: Desarrollo de aplicaciones móviles con React Native
+Autor: Paúl Terán
+
+FUNCIONALIDADES PRINCIPALES
+
+- Navegación principal mediante Bottom Tabs.
+- Navegación por Stack dentro de la pestaña Catálogo.
+- Lista de productos tecnológicos.
+- Pantalla de detalle para visualizar la información completa del producto seleccionado.
+- Paso del objeto completo del producto mediante parámetros de ruta.
+- Recuperación de datos en la pantalla de detalle con useRoute().
+- Botón "Volver al catálogo" implementado con navigation.goBack().
+- Pestaña "Acerca de" con información general de la aplicación.
+- Personalización de iconos en las pestañas usando emojis.
+- Separación del código por navegación, pantallas, componentes, hooks, tipos y estilos.
+
+PANTALLAS IMPLEMENTADAS
+
+1. Catálogo
+   Muestra la lista de productos disponibles.
+
+2. Detalle
+   Muestra el nombre, categoría, descripción e imagen del producto seleccionado.
+
+3. Acerca de
+   Muestra información general de la aplicación, materia, carrera e integrantes.
+
+ESTRUCTURA DE NAVEGACIÓN IMPLEMENTADA
+
+- NavigationContainer
+  - Bottom Tab Navigator
+    - Catálogo
+      - Stack Navigator
+        - ListaScreen
+        - DetalleScreen
+    - Acerca de
+      - AcercaDeScreen
+
+DATOS DE PRUEBA UTILIZADOS
+
+1. Smartphone X1
+   Categoría: Tecnología móvil
+   Descripción: Teléfono inteligente con pantalla AMOLED y batería de larga duración.
+
+2. Tablet Pro
+   Categoría: Productividad
+   Descripción: Tablet ideal para estudiar, tomar apuntes y revisar documentos.
+
+3. Auriculares BT
+   Categoría: Audio
+   Descripción: Auriculares inalámbricos con conexión Bluetooth y cancelación de ruido.
+
+4. Cámara DSL
+   Categoría: Fotografía
+   Descripción: Cámara digital para fotografía creativa con lente intercambiable.
+
+5. Laptop Air
+   Categoría: Computación
+   Descripción: Laptop liviana para desarrollo, estudio y trabajo diario.
+
+ESTRUCTURA PRINCIPAL DEL PROYECTO
+
+- App.tsx
+- src/app/AppNavigator.tsx
+- src/navigation/RootTabsNavigator.tsx
+- src/navigation/CatalogStackNavigator.tsx
+- src/navigation/navigationTypes.ts
+- src/features/catalog/domain/CatalogItem.ts
+- src/features/catalog/data/catalogItems.ts
+- src/features/catalog/hooks/useCatalogItems.ts
+- src/features/catalog/components/CatalogCard.tsx
+- src/features/catalog/screens/ListaScreen.tsx
+- src/features/catalog/screens/DetalleScreen.tsx
+- src/features/about/screens/AcercaDeScreen.tsx
+- src/shared/components/ScreenContainer.tsx
+- src/shared/styles/colors.ts
+- src/shared/styles/spacing.ts
+- src/shared/styles/radius.ts
+- src/shared/styles/typography.ts
+
+COMPONENTES UTILIZADOS DE REACT NATIVE
+
+- View
+- Text
+- FlatList
+- Pressable
+- StatusBar
+- StyleSheet
+
+REACT NAVIGATION UTILIZADO
+
+- NavigationContainer
+- createBottomTabNavigator
+- createStackNavigator
+- useNavigation
+- useRoute
+- NavigatorScreenParams
+- RouteProp
+- StackNavigationProp
+
+DEPENDENCIAS PRINCIPALES
+
+- @react-navigation/native
+- @react-navigation/stack
+- @react-navigation/native-stack
+- @react-navigation/bottom-tabs
+- react-native-screens
+- react-native-safe-area-context
+- react-native-gesture-handler
+- @react-native-masked-view/masked-view
+
+REQUERIMIENTOS TÉCNICOS CUMPLIDOS
+
+- Configuración de @react-navigation/native.
+- Configuración de @react-navigation/stack.
+- Configuración de @react-navigation/bottom-tabs.
+- Uso de NavigationContainer en la raíz de la aplicación.
+- Stack Navigator correctamente anidado dentro del Bottom Tab Navigator.
+- Paso de datos con navigation.navigate('DetalleScreen', { item }).
+- Recepción de parámetros con useRoute().
+- Renderizado dinámico de datos en DetalleScreen.
+- Botón de regreso con navigation.goBack().
+- Personalización de tabBarIcon.
+- Tipado de rutas con TypeScript.
+- Uso de interface CatalogItem.
+- Uso de hook personalizado useCatalogItems().
+- Uso de componente reutilizable CatalogCard.
+- Uso de componente reutilizable ScreenContainer.
+- Estilos centralizados con StyleSheet.create().
+- Separación ordenada del proyecto por responsabilidades.
+
+INSTRUCCIONES DE INSTALACIÓN Y EJECUCIÓN
+
+1. Clonar el repositorio:
+
+git clone https://github.com/Parterdev/03_clase_tres_navegacion.git
+
+2. Ingresar al proyecto:
+
+cd 03_clase_tres_navegacion
+
+3. Instalar dependencias:
+
+npm install
+
+4. Ejecutar Metro:
+
+npm run start
+
+5. Ejecutar en Android:
+
+npm run android
+
+6. Ejecutar en iOS:
+
+cd ios
+pod install
+cd ..
+npm run ios
+
+NOTA TÉCNICA
+
+Durante las pruebas puede mostrarse el siguiente warning en React Native DevTools:
+
+InteractionManager has been deprecated and will be removed in a future release.
+
+Este aviso no proviene del código desarrollado en src, ya que el proyecto no utiliza InteractionManager directamente. La aplicación funciona correctamente y el warning no afecta la navegación, el paso de parámetros ni la visualización de las pantallas.
+
+NOTA FINAL
+
+El repositorio contiene el código fuente completo de la aplicación, el documento de requerimientos en la carpeta documents/ y la implementación funcional solicitada para la actividad de la Semana 3.
